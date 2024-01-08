@@ -1,0 +1,13 @@
+:root {
+    --black: rgba(0, 0, 0, 1);
+    --blue: rgba(115, 162, 255, 1);
+    --false-black: rgba(64, 64, 64, 1);
+    --input-field-label-font-family: "Roboto-Regular", Helvetica;
+    --input-field-label-font-size: 9px;
+    --input-field-label-font-style: normal;
+    --input-field-label-font-weight: 400;
+    --input-field-label-letter-spacing: 1.8px;
+    --input-field-label-line-height: normal;
+    --white: rgba(255, 255, 255, 1);
+  }
+  

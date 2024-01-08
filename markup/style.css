@@ -1,0 +1,489 @@
+.login-frame {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-frame .overlap-group-wrapper {
+  height: 640px;
+  width: 360px;
+}
+
+.login-frame .overlap-group {
+  height: 640px;
+  position: relative;
+}
+
+.login-frame .android-small {
+  background-color: #ffffff;
+  height: 640px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 360px;
+}
+
+.login-frame .text-wrapper-3 {
+  color: #000000;
+  font-family: "Inter-Light", Helvetica;
+  font-size: 24px;
+  font-weight: 300;
+  left: 28px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 22px;
+  width: 304px;
+}
+
+.login-frame .button {
+  all: unset;
+  background-color: #426b1f;
+  border-radius: 8px;
+  box-sizing: border-box;
+  height: 64px;
+  left: 109px;
+  overflow: hidden;
+  position: absolute;
+  top: 522px;
+  width: 141px;
+}
+
+.login-frame .text-wrapper-4 {
+  color: #ffffff;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-size: 20px;
+  font-weight: 600;
+  height: 26px;
+  left: 40px;
+  letter-spacing: 0;
+  line-height: 26px;
+  position: absolute;
+  top: 18px;
+  white-space: nowrap;
+}
+
+.login-frame .text-wrapper-5 {
+  color: #000000;
+  font-family: "Inter-Light", Helvetica;
+  font-size: 20px;
+  font-weight: 300;
+  left: 113px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 102px;
+  width: 133px;
+}
+
+.login-frame .password {
+  left: 80px !important;
+  position: absolute !important;
+  top: 297px !important;
+}
+
+.login-frame .username {
+  left: 80px !important;
+  position: absolute !important;
+  top: 193px !important;
+}
+
+.login-frame .loader-anim-instance {
+  background-image: url(./subtract-2.svg) !important;
+  height: 50px !important;
+  left: 151px !important;
+  position: absolute !important;
+  top: 434px !important;
+  width: 57px !important;
+}
+
+.login-frame .design-component-instance-node {
+  height: 7px !important;
+  left: 52px !important;
+  top: 20px !important;
+  width: 5px !important;
+}
+.login-frame {
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-frame .overlap-group-wrapper {
+  height: 640px;
+  width: 360px;
+}
+
+.login-frame .overlap-group {
+  height: 640px;
+  position: relative;
+}
+
+.login-frame .android-small {
+  background-color: #ffffff;
+  height: 640px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 360px;
+}
+
+.login-frame .text-wrapper-3 {
+  color: #000000;
+  font-family: "Inter-Light", Helvetica;
+  font-size: 24px;
+  font-weight: 300;
+  left: 28px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 22px;
+  width: 304px;
+}
+
+.login-frame .button {
+  all: unset;
+  background-color: #426b1f;
+  border-radius: 8px;
+  box-sizing: border-box;
+  height: 64px;
+  left: 109px;
+  overflow: hidden;
+  position: absolute;
+  top: 522px;
+  width: 141px;
+}
+
+.login-frame .text-wrapper-4 {
+  color: #ffffff;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-size: 20px;
+  font-weight: 600;
+  height: 26px;
+  left: 40px;
+  letter-spacing: 0;
+  line-height: 26px;
+  position: absolute;
+  top: 18px;
+  white-space: nowrap;
+}
+
+.login-frame .text-wrapper-5 {
+  color: #000000;
+  font-family: "Inter-Light", Helvetica;
+  font-size: 20px;
+  font-weight: 300;
+  left: 113px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 102px;
+  width: 133px;
+}
+
+.login-frame .password {
+  left: 80px !important;
+  position: absolute !important;
+  top: 297px !important;
+}
+
+.login-frame .username {
+  left: 80px !important;
+  position: absolute !important;
+  top: 193px !important;
+}
+
+.login-frame .loader-anim-instance {
+  background-image: url(./subtract-2.svg) !important;
+  height: 50px !important;
+  left: 151px !important;
+  position: absolute !important;
+  top: 434px !important;
+  width: 57px !important;
+}
+
+.login-frame .design-component-instance-node {
+  height: 7px !important;
+  left: 52px !important;
+  top: 20px !important;
+  width: 5px !important;
+}
+
+.loader-anim {
+  background-size: 100% 100%;
+  height: 24px;
+  position: relative;
+  width: 24px;
+}
+
+.loader-anim .ellipse-stroke {
+  position: absolute;
+}
+
+.loader-anim.three {
+  background-image: url(./subtract-2.svg);
+}
+
+.loader-anim.twenty-three {
+  background-image: url(./subtract-22.svg);
+}
+
+.loader-anim.eight {
+  background-image: url(./subtract-7.svg);
+}
+
+.loader-anim.twenty-two {
+  background-image: url(./subtract-21.svg);
+}
+
+.loader-anim.ten {
+  background-image: url(./subtract-9.svg);
+}
+
+.loader-anim.nineteen {
+  background-image: url(./subtract-18.svg);
+}
+
+.loader-anim.seven {
+  background-image: url(./subtract-6.svg);
+}
+
+.loader-anim.twelve {
+  background-image: url(./subtract-11.svg);
+}
+
+.loader-anim.fifteen {
+  background-image: url(./subtract-14.svg);
+}
+
+.loader-anim.sixteen {
+  background-image: url(./subtract-15.svg);
+}
+
+.loader-anim.seventeen {
+  background-image: url(./subtract-16.svg);
+}
+
+.loader-anim.five {
+  background-image: url(./subtract-4.svg);
+}
+
+.loader-anim.twenty {
+  background-image: url(./subtract-19.svg);
+}
+
+.loader-anim.one {
+  background-image: url(./subtract.svg);
+}
+
+.loader-anim.eighteen {
+  background-image: url(./subtract-17.svg);
+}
+
+.loader-anim.twenty-one {
+  background-image: url(./subtract-20.svg);
+}
+
+.loader-anim.two {
+  background-image: url(./image.svg);
+}
+
+.loader-anim.fourteen {
+  background-image: url(./subtract-13.svg);
+}
+
+.loader-anim.six {
+  background-image: url(./subtract-5.svg);
+}
+
+.loader-anim.eleven {
+  background-image: url(./subtract-10.svg);
+}
+
+.loader-anim.four {
+  background-image: url(./subtract-3.svg);
+}
+
+.loader-anim.thirteen {
+  background-image: url(./subtract-12.svg);
+}
+
+.loader-anim.twenty-four {
+  background-image: url(./subtract-23.svg);
+}
+
+.loader-anim.nine {
+  background-image: url(./subtract-8.svg);
+}
+
+.loader-anim.three .ellipse-stroke {
+  height: 3px;
+  left: 21px;
+  top: 15px;
+  width: 3px;
+}
+
+.loader-anim.twenty-three .ellipse-stroke {
+  height: 3px;
+  left: 20px;
+  top: 4px;
+  width: 3px;
+}
+
+.loader-anim.eight .ellipse-stroke {
+  height: 2px;
+  left: 8px;
+  top: 22px;
+  width: 3px;
+}
+
+.loader-anim.twenty-two .ellipse-stroke {
+  height: 3px;
+  left: 18px;
+  top: 2px;
+  width: 3px;
+}
+
+.loader-anim.ten .ellipse-stroke {
+  height: 3px;
+  left: 3px;
+  top: 19px;
+  width: 3px;
+}
+
+.loader-anim.nineteen .ellipse-stroke {
+  height: 2px;
+  left: 10px;
+  top: 0;
+  width: 3px;
+}
+
+.loader-anim.seven .ellipse-stroke {
+  height: 2px;
+  left: 11px;
+  top: 22px;
+  width: 3px;
+}
+
+.loader-anim.twelve .ellipse-stroke {
+  height: 3px;
+  left: 0;
+  top: 14px;
+  width: 2px;
+}
+
+.loader-anim.fifteen .ellipse-stroke {
+  height: 3px;
+  left: 1px;
+  top: 5px;
+  width: 3px;
+}
+
+.loader-anim.sixteen .ellipse-stroke {
+  height: 3px;
+  left: 2px;
+  top: 3px;
+  width: 3px;
+}
+
+.loader-anim.seventeen .ellipse-stroke {
+  height: 3px;
+  left: 4px;
+  top: 1px;
+  width: 3px;
+}
+
+.loader-anim.five .ellipse-stroke {
+  height: 3px;
+  left: 16px;
+  top: 20px;
+  width: 3px;
+}
+
+.loader-anim.twenty .ellipse-stroke {
+  height: 2px;
+  left: 12px;
+  top: 0;
+  width: 3px;
+}
+
+.loader-anim.one .ellipse-stroke {
+  height: 3px;
+  left: 22px;
+  top: 10px;
+  width: 2px;
+}
+
+.loader-anim.eighteen .ellipse-stroke {
+  height: 2px;
+  left: 7px;
+  top: 0;
+  width: 3px;
+}
+
+.loader-anim.twenty-one .ellipse-stroke {
+  height: 3px;
+  left: 15px;
+  top: 1px;
+  width: 3px;
+}
+
+.loader-anim.two .ellipse-stroke {
+  height: 3px;
+  left: 22px;
+  top: 12px;
+  width: 2px;
+}
+
+.loader-anim.fourteen .ellipse-stroke {
+  height: 3px;
+  left: 0;
+  top: 8px;
+  width: 2px;
+}
+
+.loader-anim.six .ellipse-stroke {
+  height: 2px;
+  left: 14px;
+  top: 21px;
+  width: 3px;
+}
+
+.loader-anim.eleven .ellipse-stroke {
+  height: 3px;
+  left: 1px;
+  top: 16px;
+  width: 3px;
+}
+
+.loader-anim.four .ellipse-stroke {
+  height: 3px;
+  left: 19px;
+  top: 18px;
+  width: 3px;
+}
+
+.loader-anim.thirteen .ellipse-stroke {
+  height: 3px;
+  left: 0;
+  top: 11px;
+  width: 2px;
+}
+
+.loader-anim.twenty-four .ellipse-stroke {
+  height: 3px;
+  left: 21px;
+  top: 7px;
+  width: 2px;
+}
+
+.loader-anim.nine .ellipse-stroke {
+  height: 3px;
+  left: 6px;
+  top: 21px;
+  width: 3px;
+}
