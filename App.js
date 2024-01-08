@@ -1,35 +1,65 @@
-// issues
-//  move spinner between pwd and btn
-//  fonts
-//  btn clickable area is elusive or very small 
+//  TODO
+//    FontFamily
+//    use POST in fetch
+//    decouple login logic from UI code and UX messages
+//      empty usr/pwd
+//      invalid pwd len
+//      prevent re-entry
+//      no net cnx available
+//      net error
+//      service error
+//      service timed out
+//      login failed
+//  DONE 
+//    text entry
+//    move spinner between pwd and btn
+//    btn clickable area depends on...
 
 import { React, Component, useState } from "react";
 import { Text, StyleSheet, View, TouchableHighligh } from "react-native";
-import { Image } from "expo-image";
 import { FontFamily, Color, FontSize, Border, Padding } from "./GlobalStyles";
-import { ActivityIndicator, Alert, TouchableNativeFeedback } from 'react-native';
+import { ActivityIndicator, Alert, TextInput, TouchableNativeFeedback, ScrollView } from 'react-native';
 
 async function sleep(msec) {
   return new Promise(resolve => setTimeout(resolve, msec));
 }
 
+class Movie {
+  id = '';
+  title = '';
+  releaseYear ='';
+};
+
+
+class Response  {
+  description = '';
+  title = '';
+  movies = new Movie();
+};
+
 
 const LoginFrame = () => {
   const [isLoading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(new Response());
+  const [usrText, setUsrText] = useState('def usr');
+  const [pwdText, setPwdText] = useState('def pwd');
 
   class LoginButton extends Component {
     async  _onPressButton() {
       setLoading(true);
-      // Alert.alert('You tapped the button!');
+
+      let username = usrText ?? 'empty';
+      let password = pwdText ?? 'empty';
+      Alert.alert('usr ' + username  + '\t\n' + 'pwd ' + password);
+
       try {
         const response = await fetch('https://reactnative.dev/movies.json');
         const json = await response.json();
 
         // display the spinner
-        await sleep(2000);
+        await sleep(1000);
 
-        setData(json.movies);
+        setData(json?? new Movie());
       } catch (error) {
         console.error(error);
       } finally {
@@ -40,76 +70,67 @@ const LoginFrame = () => {
     render() {
       return (
         <TouchableNativeFeedback
-        onPress={this._onPressButton}
-        background={ TouchableNativeFeedback.SelectableBackground()}>
-        <View style={styles.container} >
-          <Text style={[styles.logIn, styles.logTypo]}>Log In</Text>
-        </View>
+          onPress={this._onPressButton}
+          background={ TouchableNativeFeedback.SelectableBackground()}>
+          <View style={styles.container} >
+            <Text style={styles.logIn}>Log In</Text>
+          </View>
         </TouchableNativeFeedback>
       );
     }
   }
 
-  
-  function ParseMovie(json){
-    return JSON.parse(json);
-  }
-
   return (
     <View style={styles.loginframe}>
       <View style={styles.androidSmall1}>
-        <Text style={[styles.welcomeToCrisprmaestro, styles.pleaseLogInTypo]}>
-          {`Welcome to CrisprMaestro.`}
-        </Text>
+        <Text style={styles.welcomeToCrisprmaestro}>Welcome to CrisprMaestro.</Text>
+        <Text style={styles.pleaseLogIn}>Please Log in.</Text>
+
+        {/* username */}
+        <View style={[styles.username, styles.textPosition]}>
+          <Text style={[styles.label, styles.labelTypo]}>User name</Text>
+          <View style={styles.textbox}>
+            <TextInput  placeholder="Type username here." onChangeText={(t) => setUsrText(t)} defaultValue={data[0]?.title} />
+          </View>
+        </View>
+
+        {/* password */}
+        <View style={[styles.password, styles.textPosition]}>
+          <Text style={[styles.label, styles.labelTypo]}>password</Text>
+          <View style={styles.textbox}>
+            <TextInput  placeholder="Type password here." onChangeText={(t) => setPwdText(t)} defaultValue={pwdText} />
+          </View>
+        </View>
+
+        {/* progress/status */}
+        <>
+        {isLoading ? (
+          <View style={[StyleSheet.absoluteFill, justifyContent='center', alignItems='center']}>
+            <ActivityIndicator size={100} color={'#426b1f'} top={400} />
+          </View>
+          ):(
+          <ScrollView style={[styles.status, styles.textPosition]}>
+            <Text style={[styles.labelTypo]}>{data?.description}</Text>
+          </ScrollView>
+          )}
+        </>
+
+        {/* login button */}
         <View style={[styles.button, styles.buttonPosition]}>
           <LoginButton >
           </LoginButton>
         </View>
-        <Text style={[styles.pleaseLogIn, styles.logTypo]}>Please Log in.</Text>
-        <View style={[styles.password, styles.passwordPosition]}>
-        <Text style={[styles.label, styles.labelTypo]}>password</Text>
-        <View style={styles.textbox}>
-          <Text style={[styles.textFieldData, styles.labelTypo]}>
-            {data[0]?.title } 
-          </Text>
-          <View style={styles.textboxChild} />
-        </View>
-        </View>
-        <View style={[styles.username, styles.passwordPosition]}>
-          <Text style={[styles.label, styles.labelTypo]}>User name</Text>
-          <View style={styles.textbox}>
-            <Text style={[styles.textFieldData, styles.labelTypo]}>
-              Text field data 
-            </Text>
-            <View style={styles.textboxChild} />
-          </View>
-        </View>
-        <View style={[styles.passwordPosition]}>
-          {!isLoading ? (<ActivityIndicator size="large" color="#00ff00" />) : <></>}
-        </View>
+
       </View>
-    </View>
-  );
-};
+    </View>);
+  };
 
 const styles = StyleSheet.create({
-  pleaseLogInTypo: {
-    height: 33,
-    // fontFamily: FontFamily.interLight,
-    fontWeight: "300",
-    color: Color.black,
-  },
   buttonPosition: {
     left: "50%",
     position: "absolute",
   },
-  logTypo: {
-    fontSize: FontSize.size_xl,
-    textAlign: "left",
-    left: "50%",
-    position: "absolute",
-  },
-  passwordPosition: {
+  textPosition: {
     width: 200,
     left: 80,
     position: "absolute",
@@ -119,25 +140,25 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
   welcomeToCrisprmaestro: {
-    marginLeft: -142,
+    // marginLeft: -142,
     top: 33,
     fontSize: 22,
-    width: 360,
-    textAlign: "left",
+    textAlign: "center",
     height: 33,
     // fontFamily: FontFamily.interLight,
-    fontWeight: "300",
-    left: "50%",
-    position: "absolute",
+    height: 33,
+    fontWeight: "400",
+    color: Color.black,
   },
   logIn: {
-    marginTop: 13,
-    marginLeft: -30.5,
-    lineHeight: 26,
+    textAlign: "center",
+    fontSize: 32,
+    marginTop: 16,
+    marginBottom: 16,
+    lineHeight: 30,
     fontWeight: "600",
     // fontFamily: FontFamily.interSemiBold,
     color: Color.white,
-    top: "50%",
   },
   button: {
     marginTop: 202,
@@ -150,14 +171,13 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   pleaseLogIn: {
-    marginLeft: -67,
-    top: 103,
-    width: 150,
+    top: 80,
     height: 33,
     // fontFamily: FontFamily.interLight,
     fontWeight: "300",
     color: Color.black,
-    fontSize: FontSize.size_xl,
+    fontSize: 22,
+    textAlign: "center",
   },
   label: {
     // fontSize: FontSize.inputFieldLabel_size,
@@ -189,11 +209,15 @@ const styles = StyleSheet.create({
     marginTop: 4,
     backgroundColor: Color.white,
   },
+  status: {
+    top: 400,
+    height: 100
+  },
   password: {
-    top: 297,
+    top: 300,
   },
   username: {
-    top: 193,
+    top: 200,
   },
   androidSmall1: {
     top: 0,
