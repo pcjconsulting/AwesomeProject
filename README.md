@@ -1,8 +1,5 @@
 # AwesomeProject
 React-native POC using expo
-3:46 PM 12/19/2023  "mansplainin is an example of corectile disfunction" from B. Hawks
-
-fiber diggers cut the pwr @ home --> KPL
 
 Install yarn	( https://yarnpkg.com/getting-started/install )
 	<br>• installed node.js
@@ -28,21 +25,3 @@ Install yarn	( https://yarnpkg.com/getting-started/install )
 	<br>• Install Expo Go app on Android phone
 
 <br>Run Expo Go on Android and scan the QR code. That's once around the track
-
-		
-
-<br>notes
-<br>	install yarn threw error
-<br>		PS C:\Windows\system32>yarn init -2
-<br>
-<br>Internal Error: Process git failed to spawn 
-<br>
-<br>	• https://git-scm.com/download/win -- install git
-<br>
-<br>Internal Error: Process git failed to spawn 
-<br>
-<br>   run as Peter (not webster)_
-<br>	• https://git-scm.com/download/win -- install git (as Peter)
-<br>
-<br>Internal Error: Process git failed to spawn
-<br>*_ uncle _*
