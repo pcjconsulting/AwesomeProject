@@ -1,15 +1,26 @@
 //  TODO
 //    FontFamily
 //    use POST in fetch
-//    decouple login logic from UI code and UX messages
-//      empty usr/pwd
-//      invalid pwd len
-//      prevent re-entry
-//      no net cnx available
-//      net error
-//      service error
-//      service timed out
-//      login failed
+//    decouple logic from UI code and UX messages
+//      invalid
+//        empty usr/pwd
+//        invalid pwd len
+//        prevent re-entry
+//      fail
+//        no net cnx available
+//        net error - unreachable
+//        proxy request timed out
+//        service error - 500's
+//        service warning - 400's
+//        service timed out - 408
+//        login failed, not authorized
+//      abort
+//        user cancel
+//        auto canceo in proxy dtor
+//        dropped net cnx
+//      succeed
+//        service respose - 200's
+//        login success, authorized
 //  DONE 
 //    text entry
 //    move spinner between pwd and btn
@@ -25,20 +36,21 @@ async function sleep(msec) {
 }
 
 class Movie {
-  id = '';
-  title = '';
-  releaseYear ='';
+  id = '0';
+  title = 'movie title';
+  releaseYear ='releaseYear';
 };
 
 
 class Response  {
-  description = '';
-  title = '';
+  description = 'description';
+  title = 'title';
   movies = new Movie();
 };
 
 
 const LoginFrame = () => {
+  const [status, setStatus] = useState('');
   const [isLoading, setLoading] = useState(false);
   const [data, setData] = useState(new Response());
   const [usrText, setUsrText] = useState('def usr');
@@ -46,22 +58,45 @@ const LoginFrame = () => {
 
   class LoginButton extends Component {
     async  _onPressButton() {
-      setLoading(true);
 
+      // get the vars for POST
       let username = usrText ?? 'empty';
       let password = pwdText ?? 'empty';
-      Alert.alert('usr ' + username  + '\t\n' + 'pwd ' + password);
+
+      // display status
+      msg = 'Logging in ' + username  + '...';
+      setStatus(msg);
+      await sleep(500);
 
       try {
-        const response = await fetch('https://reactnative.dev/movies.json');
-        const json = await response.json();
-
         // display the spinner
-        await sleep(1000);
+        setLoading(true);
+        await sleep(500);
 
-        setData(json?? new Movie());
+        // request/response
+        const response = await fetch('https://reactnative.dev/movies.json');
+        responseCode = response?.status?? 0;
+
+        // error response
+        if(responseCode  >= 500){
+          setData(new Response());
+          setStatus('ERROR ' + responseCode + ' ' + response.status);
+        }
+        // warning response
+        else if(responseCode >= 300){
+          setData(new Response());
+          setStatus('ERROR ' + responseCode + ' ' + response.status);
+        }
+        // OK, get data
+        else if(responseCode >= 200){
+          const json = await response.json();
+          setData(json?? new Response());
+          setStatus('OK ' + responseCode);
+        }
+
       } catch (error) {
-        console.error(error);
+        setStatus('Caught ' + error);
+        // console.error(error);
       } finally {
         setLoading(false);
       }
@@ -110,7 +145,7 @@ const LoginFrame = () => {
           </View>
           ):(
           <ScrollView style={[styles.status, styles.textPosition]}>
-            <Text style={[styles.labelTypo]}>{data?.description}</Text>
+            <Text style={[styles.labelTypo]}>{status}</Text>
           </ScrollView>
           )}
         </>
